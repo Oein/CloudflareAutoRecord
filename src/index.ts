@@ -1,6 +1,16 @@
 import axios_ from "axios";
 import "dotenv/config";
 
+if (
+  !process.env.TOKEN ||
+  !process.env.DOMAIN ||
+  !process.env.FULL_DOMAIN ||
+  !process.env.RECORD_TYPE
+) {
+  console.log("Env not found");
+  process.exit(1);
+}
+
 const axios = axios_.create({
   baseURL: "https://api.cloudflare.com/client/v4",
   headers: {
